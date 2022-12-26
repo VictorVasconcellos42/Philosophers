@@ -6,7 +6,7 @@
 #    By: vde-vasc <vde-vasc@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 12:46:22 by vde-vasc          #+#    #+#              #
-#    Updated: 2022/12/26 13:00:00 by vde-vasc         ###   ########.fr        #
+#    Updated: 2022/12/26 13:33:29 by vde-vasc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,20 +31,22 @@ END	=	\033[0m
 
 #####################################
 
-.c.o:
-	${CC} ${CFLAGS} $< -o $@
+all:	$(NAME) ${OBJ}
 
-all:	$(NAME)
+.c.o:
+	@${CC} ${CFLAGS} $< -c -o $@
+	@echo "${BLUE}OBJECTS CREATED!!!${END}"
 
 $(NAME): ${OBJ}
-	echo "${RED} Let's go, philosophers!!${END}"
-	${CC} ${CFLAGS} ${OBJ} -o $(NAME)
+	@${CC} ${CFLAGS} ${OBJ} -o $(NAME)
+	@echo "${GREEN}Let's go, philosophers!!${END}"
 
 clean:
-	rm -rf *.o
+	@rm -rf ${OBJ}
+	@echo "${RED}Cleaning....!!${END}"
 
 fclean:	clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
 
