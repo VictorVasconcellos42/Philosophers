@@ -6,7 +6,7 @@
 #    By: vde-vasc <vde-vasc@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 12:46:22 by vde-vasc          #+#    #+#              #
-#    Updated: 2022/12/26 13:33:29 by vde-vasc         ###   ########.fr        #
+#    Updated: 2023/01/06 09:50:17 by vasconcel        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJ	=	${SRC:.c=.o}
 
 CC	=	cc
 
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-g -Wall -Wextra -Werror -pthread
 
 ############# COLOR ##################
 GREEN	=	\033[0;32m

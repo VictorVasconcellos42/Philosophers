@@ -6,11 +6,18 @@
 /*   By: vde-vasc <vde-vasc@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:16:56 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/05 17:44:48 by vasconcel        ###   ########.fr       */
+/*   Updated: 2023/01/06 09:49:56 by vasconcel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
+
+void	*routine()
+
+{
+	printf("My thread test\n");
+	return NULL;
+}
 
 long	get_time(void)
 
@@ -28,14 +35,9 @@ long	get_time(void)
 int	main(void)
 
 {
-	long start_time;
-
-	start_time = get_time();
-
-	while (1)
-	{
-		printf("%ld\n", get_time() - start_time);
-		usleep(200 * 1000);
-	}
+	pthread_t	t1;
+	
+	pthread_create(&t1, NULL, &routine, NULL);
+	pthread_join(t1, NULL);
 	return (0);
 }
