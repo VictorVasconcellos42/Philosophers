@@ -6,17 +6,18 @@
 /*   By: vde-vasc <vde-vasc@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:16:56 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/06 09:49:56 by vasconcel        ###   ########.fr       */
+/*   Updated: 2023/01/09 14:40:57 by vasconcel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-void	*routine()
+void	*routine(void *ph)
 
 {
-	printf("My thread test\n");
-	return NULL;
+	printf("Hello %p\n", ph);
+	sleep(2);
+	return (NULL);
 }
 
 long	get_time(void)
@@ -32,12 +33,26 @@ long	get_time(void)
 }
 
 
-int	main(void)
+int	main(int argc, char **argv)
 
 {
-	pthread_t	t1;
-	
-	pthread_create(&t1, NULL, &routine, NULL);
-	pthread_join(t1, NULL);
+	t_config	my;
+	int		i;
+	int		total_philo;
+
+	if (argc == 2)
+	{
+		total_philo = atoi(argv[1]);
+		my.ph = malloc(sizeof(t_philo) * total_philo);
+		i = 0;
+		while (i < total_philo)
+		{
+			my.ph[i].index = i + 1;
+			pthread_create(&my.ph[i].philo, NULL, &routine, &my);
+			i++;
+		}
+		while (--i)
+			pthread_join(my.ph[i].philo, NULL);
+	}
 	return (0);
 }
