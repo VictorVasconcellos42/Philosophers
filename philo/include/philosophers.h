@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/09 11:09:26 by vasconcel        ###   ########.fr       */
+/*   Updated: 2023/01/11 04:24:58 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <string.h>
 # include <sys/time.h>
 # include <pthread.h>
+
+# define FORMAT "Format: <number_of_philosophers> <time_to_die> <time_to_eat> <time_to_spleep> [number_of_times_each_philosopher_must_eat]"
 
 typedef struct	s_philo
 
