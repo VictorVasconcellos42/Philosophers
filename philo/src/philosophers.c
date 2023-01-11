@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:16:56 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/09 14:40:57 by vasconcel        ###   ########.fr       */
+/*   Updated: 2023/01/11 02:45:18 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void	*routine(void *ph)
 
 {
-	printf("Hello %p\n", ph);
+	t_config *filo;
+
+	filo = (t_config *)ph;
+	printf("Hello %d - philo\n", filo->ph->index);
 	sleep(2);
 	return (NULL);
 }
