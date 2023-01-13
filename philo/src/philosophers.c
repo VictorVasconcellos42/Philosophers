@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:16:56 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/11 02:45:18 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/13 08:34:26 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 void	*routine(void *ph)
 
 {
-	t_config *filo;
+	t_philo *filo;
 
-	filo = (t_config *)ph;
-	printf("Hello %d - philo\n", filo->ph->index);
-	sleep(2);
+	filo = (t_philo *)ph;
+	printf("Hello, I'm philosopher %i\n", filo->index);
 	return (NULL);
 }
 
@@ -43,19 +42,19 @@ int	main(int argc, char **argv)
 	int		i;
 	int		total_philo;
 
-	if (argc == 2)
+	if (ft_valid_argc(argc, argv) == FALSE)
+		return (1);
+	pthread_mutex_init(&my.mutex, NULL);
+	total_philo = atoi(argv[1]);
+	my.ph = malloc(sizeof(t_philo) * total_philo);
+	i = 0;
+	while (i < total_philo)
 	{
-		total_philo = atoi(argv[1]);
-		my.ph = malloc(sizeof(t_philo) * total_philo);
-		i = 0;
-		while (i < total_philo)
-		{
-			my.ph[i].index = i + 1;
-			pthread_create(&my.ph[i].philo, NULL, &routine, &my);
-			i++;
-		}
-		while (--i)
-			pthread_join(my.ph[i].philo, NULL);
+		my.ph[i].index = i + 1;
+		pthread_create(&my.ph[i].philo, NULL, &routine, &my.ph[i]);
+		i++;
 	}
+	while (--i)
+		pthread_join(my.ph[i].philo, NULL);
 	return (0);
 }
