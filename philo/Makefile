@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vde-vasc <vde-vasc@student.42.rio>         +#+  +:+       +#+         #
+#    By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 12:46:22 by vde-vasc          #+#    #+#              #
-#    Updated: 2023/01/06 09:50:17 by vasconcel        ###   ########.fr        #
+#    Updated: 2023/01/13 18:54:26 by vde-vasc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	philo
 
-SRC	=	src/philosophers.c
+SRC	=	src/philosophers.c src/validate.c src/error.c
 
 OBJ	=	${SRC:.c=.o}
 
@@ -21,6 +21,7 @@ CC	=	cc
 CFLAGS	=	-g -Wall -Wextra -Werror -pthread
 
 ############# COLOR ##################
+
 GREEN	=	\033[0;32m
 
 RED	=	\033[0;31m
