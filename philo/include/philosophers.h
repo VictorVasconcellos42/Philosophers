@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vde-vasc <vde-vasc@student.42.rio>         +#+  +:+       +#+        */
+/*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/11 04:24:58 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/13 19:08:37 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 # include <sys/time.h>
 # include <pthread.h>
 
-# define FORMAT "Format: <number_of_philosophers> <time_to_die> <time_to_eat> <time_to_spleep> [number_of_times_each_philosopher_must_eat]"
+# define TRUE 1
+# define FALSE 0
 
 typedef struct	s_philo
 
@@ -37,4 +38,9 @@ typedef	struct	s_config
 	t_philo		*ph;
 }	t_config;
 
+int	ft_valid_argc(int argc, char **argv);
+int	error_digit(int position);
+int	error_format(void);
+int	error_signal(int position);
+int	error_philo(void);
 #endif
