@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:16:56 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/17 09:06:13 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/17 14:47:17 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ void	*routine(void *ph)
 	t_philo *filo;
 	
 	filo = (t_philo *)ph;
-		printf("Hello, I'm philosopher %i\n", filo->index);
+	eat(ph);
+	dreams(ph);
+	think(ph);
 	return (NULL);
 }
 
