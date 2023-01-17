@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vde-vasc <vde-vasc@student.42.rio>         +#+  +:+       +#+        */
+/*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:16:56 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/13 08:34:26 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/17 09:06:13 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	*routine(void *ph)
 
 {
 	t_philo *filo;
-
+	
 	filo = (t_philo *)ph;
-	printf("Hello, I'm philosopher %i\n", filo->index);
+		printf("Hello, I'm philosopher %i\n", filo->index);
 	return (NULL);
 }
 
@@ -44,7 +44,6 @@ int	main(int argc, char **argv)
 
 	if (ft_valid_argc(argc, argv) == FALSE)
 		return (1);
-	pthread_mutex_init(&my.mutex, NULL);
 	total_philo = atoi(argv[1]);
 	my.ph = malloc(sizeof(t_philo) * total_philo);
 	i = 0;

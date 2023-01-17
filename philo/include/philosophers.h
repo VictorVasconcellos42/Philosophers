@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/13 19:08:37 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/17 09:15:20 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ typedef struct	s_philo
 
 {
 	pthread_t	philo;
-	int		index;
+	int			index;
+	
 }	t_philo;	
 
 typedef	struct	s_config

@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 07:45:16 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/13 19:14:19 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/17 09:10:55 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	error_philo(void)
 
 {
 	printf("Really? You need at least " \
-	"one philosopher for me to function.\n");
+	"one philosopher or timestamp more than 60 ms\n");
 	return (FALSE);
 }
 

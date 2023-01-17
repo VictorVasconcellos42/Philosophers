@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 04:12:03 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/14 15:32:50 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/17 09:09:23 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_valid_argc(int argc, char **argv)
 		i = 0;
 		while (argv[++i])
 		{
-			if (argv[1][0] == '0')
+			if (argv[i][0] == '0')
 				return (error_philo());
 			if (str_isdigit(argv[i]) == FALSE)
 			{
