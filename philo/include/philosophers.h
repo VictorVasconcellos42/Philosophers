@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/17 21:52:22 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:30:36 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,28 @@
 # define TRUE 1
 # define FALSE 0
 
+typedef struct s_config t_config;
+
 typedef struct s_philo
 {
-	pthread_t		philo;
 	int				index;
-	int				r_fork;
-	int				l_fork;
+	int				right;
+	int				left;
+	long int		last_meal;
+	pthread_t		philo;
+	t_config		*table;
 }	t_philo;	
 
 typedef struct s_config
 {
-	pthread_mutex_t	mutex;
-	int				fork;
+	pthread_mutex_t	*number_of_forks;
+	
+	int				*fork;
+	int				must_eat;
+	int				number_of_philo;
+	long			time_to_eat;
+	long			time_to_die;
+	long			time_to_sleep;
 	t_philo			*ph;
 }	t_config;
 
@@ -42,8 +52,9 @@ int		ft_valid_argc(int argc, char **argv);
 int		error_digit(int position);
 int		error_format(void);
 int		error_signal(int position);
-int		error_philo(void);
+int		error_philo_and_time(void);
 void	eat(t_philo *ph);
 void	think(t_philo *ph);
 void	dreams(t_philo *ph);
+int	init_vars(t_config *table, int argc, char **argv);
 #endif
