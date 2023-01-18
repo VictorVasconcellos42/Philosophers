@@ -6,13 +6,13 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 07:45:16 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/17 21:51:27 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:30:28 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-int	error_philo(void)
+int	error_philo_and_time(void)
 
 {
 	printf("Really? You need at least " \
