@@ -34,3 +34,16 @@ ROTINA DO FILOSOFO:
 	- SMART SLEEP;
 	- A CADA MILISSEGUNDO VERIFICAR SE ALGUEM
 	- SE ALGUEM MORRER, RETORNE TODOS OS FILOSOFOS, DAR JOIN, E DEPOIS DESTRUA TODOS MUTEX 
+
+
+long	get_time(void)
+
+{
+	struct timeval	tp;
+	long		milliseconds;
+
+	gettimeofday(&tp, NULL);
+	milliseconds = tp.tv_sec * 1000;
+	milliseconds += tp.tv_usec / 1000;
+	return (milliseconds);
+}
