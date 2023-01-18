@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:16:56 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/17 21:50:48 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:58:42 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	*routine(void *ph)
 	t_philo	*filo;
 
 	filo = (t_philo *)ph;
-	eat(ph);
-	dreams(ph);
-	think(ph);
+	eat(filo);
+	dreams(filo);
+	think(filo);
 	return (NULL);
 }
 
@@ -50,14 +50,13 @@ static void	finish_philo(t_config *table, int t_philo)
 int	main(int argc, char **argv)
 
 {
-	t_config	my;
-	int			total_philo;
+	t_config	table;
 
-	if (ft_valid_argc(argc, argv) == FALSE)
+	if (ft_valid_argc(argc, argv) == FALSE || \
+	init_vars(&table, argc, argv) == FALSE)
 		return (1);
-	total_philo = atoi(argv[1]);
-	my.ph = malloc(sizeof(t_philo) * total_philo);
-	start_philo(&my, total_philo);
-	finish_philo(&my, total_philo);
+	table.ph = malloc(sizeof(t_philo) * table.number_of_philo);
+	start_philo(&table, table.number_of_philo);
+	finish_philo(&table, table.number_of_philo);
 	return (0);
 }
