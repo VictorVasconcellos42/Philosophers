@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/18 12:30:36 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/18 14:22:10 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define TRUE 1
 # define FALSE 0
 
-typedef struct s_config t_config;
+typedef struct s_config	t_config;
 
 typedef struct s_philo
 {
@@ -38,7 +38,7 @@ typedef struct s_philo
 typedef struct s_config
 {
 	pthread_mutex_t	*number_of_forks;
-	
+
 	int				*fork;
 	int				must_eat;
 	int				number_of_philo;
@@ -56,5 +56,5 @@ int		error_philo_and_time(void);
 void	eat(t_philo *ph);
 void	think(t_philo *ph);
 void	dreams(t_philo *ph);
-int	init_vars(t_config *table, int argc, char **argv);
+int		init_vars(t_config *table, int argc, char **argv);
 #endif

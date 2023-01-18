@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 12:03:16 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/18 13:00:54 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/18 14:21:36 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	init_vars(t_config *table, int argc, char **argv)
 		table->must_eat = atoi(argv[5]);
 	else
 		table->must_eat = -1;
-	if	(valid_times(table) == FALSE)
+	if (valid_times(table) == FALSE)
 		return (FALSE);
 	return (TRUE);
 }

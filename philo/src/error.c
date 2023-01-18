@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 07:45:16 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/18 12:30:28 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/18 14:21:13 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	error_philo_and_time(void)
 
 {
 	printf("Really? You need at least " \
-	"one philosopher or timestamp more than 60 ms\n");
+	"one philosopher or timestamp more than 60 ms " \
+	"or at least meat\n");
 	return (FALSE);
 }
 
@@ -39,7 +40,7 @@ int	error_format(void)
 {
 	printf("Error! ");
 	printf("Format: <Number_of_philosophers> <time_to_die> " \
-	"<time_to_eat> <time_to_sleep> " \
+	"<time_to_eat> <time_to_sleep> "\
 	"[number_of_times_each_philosopher_must_eat]\n");
 	return (FALSE);
 }
