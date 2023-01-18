@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 12:03:16 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/18 14:21:36 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:29:12 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	valid_times(t_config *table)
 	if (table->time_to_die < 60 || \
 	table->time_to_eat < 60 || \
 	table->time_to_sleep < 60)
-		return (FALSE);
+		return (error_philo_and_time());
 	return (TRUE);
 }
 
