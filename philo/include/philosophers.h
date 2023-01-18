@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/17 21:28:48 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/17 21:52:22 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@
 # define TRUE 1
 # define FALSE 0
 
-typedef struct	s_philo
-
+typedef struct s_philo
 {
 	pthread_t		philo;
 	int				index;
@@ -32,12 +31,11 @@ typedef struct	s_philo
 	int				l_fork;
 }	t_philo;	
 
-typedef	struct	s_config
-
+typedef struct s_config
 {
 	pthread_mutex_t	mutex;
-	int		fork;
-	t_philo		*ph;
+	int				fork;
+	t_philo			*ph;
 }	t_config;
 
 int		ft_valid_argc(int argc, char **argv);

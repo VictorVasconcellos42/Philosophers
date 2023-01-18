@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 07:45:16 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/17 09:10:55 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/17 21:51:27 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	error_digit(int position)
 int	error_format(void)
 
 {
-		printf("Error! ");
-		printf("Format: <Number_of_philosophers> <time_to_die> " \
-		"<time_to_eat> <time_to_sleep> " \
-		"[number_of_times_each_philosopher_must_eat]\n");
-		return (FALSE);	
+	printf("Error! ");
+	printf("Format: <Number_of_philosophers> <time_to_die> " \
+	"<time_to_eat> <time_to_sleep> " \
+	"[number_of_times_each_philosopher_must_eat]\n");
+	return (FALSE);
 }

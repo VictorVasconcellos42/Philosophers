@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 04:12:03 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/17 09:09:23 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/17 21:49:22 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_isdigit(char c)
 static int	str_isdigit(char *str)
 
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (str[++i])
@@ -39,7 +39,7 @@ static int	str_isdigit(char *str)
 int	ft_valid_argc(int argc, char **argv)
 
 {
-	int i;
+	int	i;
 
 	if (argc != 5 && argc != 6)
 		return (error_format());

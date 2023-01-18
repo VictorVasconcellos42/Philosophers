@@ -6,19 +6,17 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:16:56 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/17 21:38:56 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/17 21:50:48 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-
-
 void	*routine(void *ph)
 
 {
-	t_philo *filo;
-	
+	t_philo	*filo;
+
 	filo = (t_philo *)ph;
 	eat(ph);
 	dreams(ph);
@@ -29,7 +27,7 @@ void	*routine(void *ph)
 static void	start_philo(t_config *table, int t_philo)
 
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < t_philo)
@@ -42,7 +40,7 @@ static void	start_philo(t_config *table, int t_philo)
 static void	finish_philo(t_config *table, int t_philo)
 
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < t_philo)
@@ -53,7 +51,7 @@ int	main(int argc, char **argv)
 
 {
 	t_config	my;
-	int		total_philo;
+	int			total_philo;
 
 	if (ft_valid_argc(argc, argv) == FALSE)
 		return (1);
