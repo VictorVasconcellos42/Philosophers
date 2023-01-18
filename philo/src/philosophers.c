@@ -6,11 +6,13 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:16:56 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/17 14:54:26 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/17 21:38:56 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
+
+
 
 void	*routine(void *ph)
 
@@ -24,37 +26,40 @@ void	*routine(void *ph)
 	return (NULL);
 }
 
-long	get_time(void)
+static void	start_philo(t_config *table, int t_philo)
 
 {
-	struct timeval	tp;
-	long		milliseconds;
+	int i;
 
-	gettimeofday(&tp, NULL);
-	milliseconds = tp.tv_sec * 1000;
-	milliseconds += tp.tv_usec / 1000;
-	return (milliseconds);
+	i = -1;
+	while (++i < t_philo)
+	{
+		table->ph[i].index = i + 1;
+		pthread_create(&table->ph[i].philo, NULL, &routine, &table->ph[i]);
+	}
 }
 
+static void	finish_philo(t_config *table, int t_philo)
+
+{
+	int i;
+
+	i = 0;
+	while (i < t_philo)
+		pthread_join(table->ph[i++].philo, NULL);
+}
 
 int	main(int argc, char **argv)
 
 {
 	t_config	my;
-	int		i;
 	int		total_philo;
 
 	if (ft_valid_argc(argc, argv) == FALSE)
 		return (1);
 	total_philo = atoi(argv[1]);
 	my.ph = malloc(sizeof(t_philo) * total_philo);
-	i = -1;
-	while (++i < total_philo)
-	{
-		my.ph[i].index = i + 1;
-		pthread_create(&my.ph[i].philo, NULL, &routine, &my.ph[i]);
-	}
-	while (--i)
-		pthread_join(my.ph[i].philo, NULL);
+	start_philo(&my, total_philo);
+	finish_philo(&my, total_philo);
 	return (0);
 }
