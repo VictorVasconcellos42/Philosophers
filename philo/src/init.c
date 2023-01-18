@@ -6,16 +6,22 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 12:03:16 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/18 15:29:12 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:55:34 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-int	get_ms_time(int seconds)
+long	get_time(void)
 
 {
-	return (seconds * 1000);
+	struct timeval	tp;
+	long		milliseconds;
+
+	gettimeofday(&tp, NULL);
+	milliseconds = tp.tv_sec * 1000;
+	milliseconds += tp.tv_usec / 1000;
+	return (milliseconds);
 }
 
 static int	valid_times(t_config *table)

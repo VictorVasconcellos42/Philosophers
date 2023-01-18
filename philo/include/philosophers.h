@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/18 14:22:10 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:55:56 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_philo
 	int				index;
 	int				right;
 	int				left;
-	long int		last_meal;
+	long			last_meal;
 	pthread_t		philo;
 	t_config		*table;
 }	t_philo;	
@@ -57,4 +57,5 @@ void	eat(t_philo *ph);
 void	think(t_philo *ph);
 void	dreams(t_philo *ph);
 int		init_vars(t_config *table, int argc, char **argv);
+long	get_time(void);
 #endif
