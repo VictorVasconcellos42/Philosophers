@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/18 15:55:56 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:33:58 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define FALSE 0
 
 typedef struct s_config	t_config;
+typedef struct s_philo t_philo;
 
 typedef struct s_philo
 {
