@@ -6,13 +6,14 @@
 #    By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 12:46:22 by vde-vasc          #+#    #+#              #
-#    Updated: 2023/01/18 12:29:46 by vde-vasc         ###   ########.fr        #
+#    Updated: 2023/01/19 15:55:52 by vde-vasc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	philo
 
-SRC	=	src/philosophers.c src/validate.c src/error.c src/routine.c src/init.c
+SRC	=	src/philosophers.c src/validate.c src/error.c src/routine.c src/init.c \
+		src/dinner.c
 
 OBJ	=	${SRC:.c=.o}
 
