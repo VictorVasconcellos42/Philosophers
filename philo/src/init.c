@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 12:03:16 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/19 13:51:07 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/19 16:09:13 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,19 @@ int	init_vars(t_config *table, int argc, char **argv)
 	if (valid_times(table) == FALSE)
 		return (FALSE);
 	return (TRUE);
+}
+
+void	init_fork(t_config *table)
+
+{
+	int i;
+
+	i = -1;
+	table->mutex_fork = malloc(sizeof(t_mutex) * table->number_of_philo);
+	table->fork = malloc(sizeof(int) * table->number_of_philo);
+	while (++i < table->number_of_philo)
+	{
+		pthread_mutex_init(&table->mutex_fork[i], NULL);
+		table->fork[i] = 1;
+	}
 }
