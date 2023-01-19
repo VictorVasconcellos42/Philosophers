@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 12:03:16 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/18 15:55:34 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/19 13:51:07 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ long	get_time(void)
 	long		milliseconds;
 
 	gettimeofday(&tp, NULL);
-	milliseconds = tp.tv_sec * 1000;
-	milliseconds += tp.tv_usec / 1000;
+	milliseconds = tp.tv_sec / 1000;
+	milliseconds += tp.tv_usec * 1000;
 	return (milliseconds);
 }
 
