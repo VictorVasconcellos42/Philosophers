@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 12:03:16 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/21 14:31:02 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/21 19:09:27 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,20 @@ long	get_time(void)
 	long		milliseconds;
 
 	gettimeofday(&tp, NULL);
-	milliseconds = tp.tv_sec / 1000;
-	milliseconds += tp.tv_usec * 1000;
+	milliseconds = tp.tv_sec * 1000;
+	milliseconds += tp.tv_usec / 1000;
 	return (milliseconds);
 }
+
+long	time_now(t_philo *ph)
+
+{
+	long start_program;
+	
+	start_program = ph->table->start_time;
+	return (get_time() - start_program);
+}
+
 
 static int	valid_times(t_config *table)
 
@@ -41,6 +51,7 @@ int	init_vars(t_config *table, int argc, char **argv)
 	table->time_to_die = atoi(argv[2]);
 	table->time_to_eat = atoi(argv[3]);
 	table->time_to_sleep = atoi(argv[4]);
+	table->start_time = get_time();
 	if (argc == 6)
 		table->must_eat = atoi(argv[5]);
 	else

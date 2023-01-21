@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:16:56 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/21 15:25:45 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/21 18:33:46 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	*routine(void *ph)
 	check_menu(filo);
 	while (DINNER)
 	{
-		think(filo);
 		while (!take_fork(filo))
 			continue ; 
 		eat(filo);
 		dreams(filo);
+		think(filo);
 	}
 	return (NULL);
 }

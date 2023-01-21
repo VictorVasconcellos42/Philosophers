@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:34:25 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/21 19:18:59 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/21 19:26:50 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	smart_sleep(long duration, t_philo *ph)
     long    start_time;
 
     start_time = time_now(ph);
-    while (time_now(ph) - start_time <= duration)
+    while (time_now(ph) - start_time < duration)
 		usleep(100);
 }
 
@@ -73,4 +73,4 @@ void	dreams(t_philo *ph)
 {
 	printf("[%ld]ms\t%i is sleeping\n", time_now(ph), ph->index);
 	smart_sleep(ph->table->time_to_sleep, ph);
-	}
+}
