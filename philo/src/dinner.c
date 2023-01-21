@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:53:43 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/21 15:24:32 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/21 19:19:56 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	check_menu(t_philo *ph)
 
 {
 	if (ph->id % 2 == 0)
-		usleep(600);
+		usleep(5000);
 }
 
 int	take_fork(t_philo *ph)
@@ -30,14 +30,16 @@ int	take_fork(t_philo *ph)
 		{
 			ph->table->fork[ph->id] = 0;
 			ph->table->fork[ph->id + 1] = 0;			
-			printf("[%ld]ms %i taken a fork\n", get_time(), ph->index);
-			printf("[%ld]ms %i taken a fork\n", get_time(), ph->index);
+			printf("[%ld]ms\t%i taken a fork\n", time_now(ph), ph->index);
+			printf("[%ld]ms\t%i taken a fork\n", time_now(ph), ph->index);
 			return (1);
 		}
 		else
 		{	
 			UNLOCK(&ph->table->mutex_fork[ph->id]);
 			UNLOCK(&ph->table->mutex_fork[ph->id + 1]);
+			printf("wait\n");
+			usleep(1000);
 			return (0);
 		}
 	}
@@ -48,14 +50,16 @@ int	take_fork(t_philo *ph)
 		{
 			ph->table->fork[ph->id] = 0;
 			ph->table->fork[0] = 0;
-			printf("[%ld]ms %i taken a fork\n", get_time(), ph->index);
-			printf("[%ld]ms %i taken a fork\n", get_time(), ph->index);
+			printf("[%ld]ms\t%i taken a fork\n", time_now(ph), ph->index);
+			printf("[%ld]ms\t%i taken a fork\n", time_now(ph), ph->index);
 			return (1);
 		}
 		else
 		{	
 			UNLOCK(&ph->table->mutex_fork[ph->id]);
 			UNLOCK(&ph->table->mutex_fork[0]);
+			printf("wait\n");
+			usleep(1000);
 			return (0);
 		}	
 	}

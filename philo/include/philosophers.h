@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/21 15:24:47 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/21 19:17:53 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_config
 	t_mutex	*mutex_fork;
 
 	int		*fork;
+	long	start_time;
 	int		must_eat;
 	int		number_of_philo;
 	long	time_to_eat;
@@ -56,18 +57,28 @@ typedef struct s_config
 	t_philo	*ph;
 }	t_config;
 
+// Validations
 int		ft_valid_argc(int argc, char **argv);
 int		error_digit(int position);
 int		error_format(void);
 int		error_signal(int position);
 int		error_philo_and_time(void);
+
+// Actions
 void	eat(t_philo *ph);
 void	think(t_philo *ph);
 void	dreams(t_philo *ph);
+
+
 void	test(t_philo *ph);
 void	check_menu(t_philo *ph);
 int		init_vars(t_config *table, int argc, char **argv);
 void	init_fork(t_config *table);
-long	get_time(void);
 int		take_fork(t_philo *ph);
+
+// Times/commons
+long	get_time(void);
+long	time_now(t_philo *ph);
+void	smart_sleep(long duration, t_philo *ph);
+
 #endif
