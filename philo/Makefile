@@ -6,7 +6,7 @@
 #    By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 12:46:22 by vde-vasc          #+#    #+#              #
-#    Updated: 2023/01/19 15:55:52 by vde-vasc         ###   ########.fr        #
+#    Updated: 2023/01/21 15:35:17 by vde-vasc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ all:	$(NAME) ${OBJ}
 	@echo "${BLUE}OBJECTS CREATED!!!${END}"
 
 $(NAME): ${OBJ}
-	@${CC} ${CFLAGS} ${OBJ} -o $(NAME)
+	@${CC} ${CFLAGS} ${OBJ} -o $(NAME) -lpthread
 	@echo "${GREEN}Let's go, philosophers!!${END}"
 
 clean:

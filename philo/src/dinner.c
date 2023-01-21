@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:53:43 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/19 18:54:23 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/21 15:24:32 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,48 @@
 void	check_menu(t_philo *ph)
 
 {
-	if (ph->index % 2 != 0)
+	if (ph->id % 2 == 0)
 		usleep(600);
 }
 
-void	take_fork(t_philo *ph)
+int	take_fork(t_philo *ph)
 
 {
-	if (ph->index % 2 == 0)
+	LOCK(&ph->table->mutex_fork[ph->id]);
+	if (ph->index != ph->table->number_of_philo)
 	{
-		pthread_mutex_lock(&ph->table->mutex_fork[ph->index + 1 % ph->index]);
-		ph->table->fork[ph->index + 1 % ph->index] = 0;
-		ph->left = 1;
-		pthread_mutex_lock(&ph->table->mutex_fork[ph->index]);
-		ph->table->fork[ph->index] = 0;
-		ph->right = 1;
+		LOCK(&ph->table->mutex_fork[ph->id + 1]);
+		if (ph->table->fork[ph->id] == 1 && ph->table->fork[ph->id + 1] == 1)
+		{
+			ph->table->fork[ph->id] = 0;
+			ph->table->fork[ph->id + 1] = 0;			
+			printf("[%ld]ms %i taken a fork\n", get_time(), ph->index);
+			printf("[%ld]ms %i taken a fork\n", get_time(), ph->index);
+			return (1);
+		}
+		else
+		{	
+			UNLOCK(&ph->table->mutex_fork[ph->id]);
+			UNLOCK(&ph->table->mutex_fork[ph->id + 1]);
+			return (0);
+		}
 	}
 	else
-	{
-		pthread_mutex_lock(&ph->table->mutex_fork[ph->index]);
-		ph->table->fork[ph->index + 1 % ph->index] = 0;
-		ph->right = 1;
-		pthread_mutex_unlock(&ph->table->mutex_fork[ph->index]);
-		pthread_mutex_lock(&ph->table->mutex_fork[ph->index + 1 % ph->index]);
-		ph->table->fork[ph->index] = 0;
-		ph->left = 1;
-		pthread_mutex_unlock(&ph->table->mutex_fork[ph->index + 1 % ph->index]);		
+	{	
+		LOCK(&ph->table->mutex_fork[0]);
+		if (ph->table->fork[ph->id] == 1 && ph->table->fork[0] == 1)
+		{
+			ph->table->fork[ph->id] = 0;
+			ph->table->fork[0] = 0;
+			printf("[%ld]ms %i taken a fork\n", get_time(), ph->index);
+			printf("[%ld]ms %i taken a fork\n", get_time(), ph->index);
+			return (1);
+		}
+		else
+		{	
+			UNLOCK(&ph->table->mutex_fork[ph->id]);
+			UNLOCK(&ph->table->mutex_fork[0]);
+			return (0);
+		}	
 	}
-		
 }

@@ -6,27 +6,44 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:34:25 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/19 18:56:44 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/21 15:29:52 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
+void	back_fork(t_philo *ph)
+
+{
+	ph->table->fork[ph->id] = 0;
+	if (ph->id != ph->table->number_of_philo)
+	{	
+		ph->table->fork[ph->id + 1] = 0;
+		UNLOCK(&ph->table->mutex_fork[ph->id]);
+		UNLOCK(&ph->table->mutex_fork[ph->id + 1]);
+	}
+	else
+	{
+		ph->table->fork[0] = 0;
+		UNLOCK(&ph->table->mutex_fork[ph->id]);
+		UNLOCK(&ph->table->mutex_fork[0]);
+	}
+}
+
+
 void	eat(t_philo *ph)
 
 {
-	if (ph->right == 1 && ph->left == 1)
-		printf("[%ld]ms %i is eating\n", get_time(), ph->index);
-	pthread_mutex_unlock(&ph->table->mutex_fork[ph->index + 1 % ph->index]);
-	ph->right = 0;
-	ph->left = 0;
-	pthread_mutex_unlock(&ph->table->mutex_fork[ph->index]);
-	usleep(1000);
+	printf("[%ld]ms %i is eating\n", get_time(), ph->index);
+	back_fork(ph);
+	usleep(ph->table->time_to_eat * 1000);
 }
 
 void	think(t_philo *ph)
 
 {
+	if (!(ph->id % 2) && (ph->table->number_of_philo % 2))
+		usleep(600);
 	printf("[%ld]ms %i is thinking\n", get_time(), ph->index);
 }
 

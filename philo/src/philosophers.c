@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:16:56 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/19 16:14:03 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/21 15:25:45 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ void	*routine(void *ph)
 	check_menu(filo);
 	while (DINNER)
 	{
-		take_fork(filo);
+		think(filo);
+		while (!take_fork(filo))
+			continue ; 
 		eat(filo);
 		dreams(filo);
-		think(filo);
 	}
 	return (NULL);
 }
@@ -38,7 +39,8 @@ static void	start_philo(t_config *table, int t_philo)
 	while (++i < t_philo)
 	{
 		table->ph[i].index = i + 1;
-		table->ph[i].table = table; 	
+		table->ph[i].id = i;
+		table->ph[i].table = table;
 		pthread_create(&table->ph[i].philo, NULL, &routine, &table->ph[i]);
 	}
 }
