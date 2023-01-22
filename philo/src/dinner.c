@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:53:43 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/21 19:19:56 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/22 15:50:08 by vasconcel        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	take_fork(t_philo *ph)
 			UNLOCK(&ph->table->mutex_fork[ph->id]);
 			UNLOCK(&ph->table->mutex_fork[ph->id + 1]);
 			printf("wait\n");
-			usleep(1000);
 			return (0);
 		}
 	}
@@ -59,7 +58,6 @@ int	take_fork(t_philo *ph)
 			UNLOCK(&ph->table->mutex_fork[ph->id]);
 			UNLOCK(&ph->table->mutex_fork[0]);
 			printf("wait\n");
-			usleep(1000);
 			return (0);
 		}	
 	}
