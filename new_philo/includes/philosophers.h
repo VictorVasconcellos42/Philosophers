@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/23 15:56:56 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/23 20:19:26 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_philo
 	int				index;
 	int				id;
 	long			last_meal;
+	int				r_fork;
+	int				l_fork;
 	pthread_t		philo;
 	t_table			*table;
 }	t_philo;	
@@ -57,6 +59,7 @@ int		ft_isdigit(char c);
 long	get_time(void);
 long	time_now(t_philo *ph);
 long	ft_atol(const char *str);
+void	smart_sleep(long duration, t_philo *ph);
 
 // ERROR FUNCTIONS //
 
@@ -86,4 +89,9 @@ int		unlock(t_mutex mutex);
 // DINNER FUNCTIONS //
 
 void	*dinner(void *ph);
+void	dreams(t_philo *ph);
+void	eat(t_philo *ph);
+void	think(t_philo *ph);
+void	take_fork(t_philo *ph);
+void	check_menu(t_philo *ph);
 #endif
