@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/23 14:21:44 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:15:05 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ typedef struct s_table
 // UTILS FUNCTIONS //
 
 int		ft_isdigit(char c);
-int		str_isdigit(char *str);
 long	get_time(void);
+long	time_now(t_philo *ph);
 
 // ERROR FUNCTIONS //
 
@@ -67,6 +67,7 @@ int		error_format(void);
 // VALIDATES FUNCTIONS //
 
 int		ft_valid_argc(int argc, char **argv);
+int		str_isdigit(char *str);
 int		valid_times(t_table *table);
 
 // INIT FUNCTIONS //
