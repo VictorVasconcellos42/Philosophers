@@ -6,16 +6,16 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:01:54 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/23 14:13:44 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:22:10 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-int unlock(t_mutex mutex)
+int	unlock(t_mutex mutex)
 
 {
-	int error;
+	int	error;
 
 	error = pthread_mutex_unlock(&mutex);
 	if (!error)
