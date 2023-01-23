@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/23 15:29:17 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:56:56 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_table
 int		ft_isdigit(char c);
 long	get_time(void);
 long	time_now(t_philo *ph);
+long	ft_atol(const char *str);
 
 // ERROR FUNCTIONS //
 
