@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/21 19:17:53 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:12:56 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define TRUE 1
 # define FALSE 0
 # define DINNER 42
-# define RIGHT (ph->index + 1) % ph->table->number_of_philo
-# define LEFT (ph->index - 1) % ph->table->number_of_philo
+# define RIGHT (ph->id + 1) % ph->table->n_philo
+# define LEFT (ph->id - 1) % ph->table->n_philo
 # define LOCK pthread_mutex_lock
 # define UNLOCK pthread_mutex_unlock
 
@@ -37,48 +37,32 @@ typedef struct s_philo
 {
 	int				index;
 	int				id;
-	int				status;
 	long			last_meal;
 	pthread_t		philo;
-	t_config		*table;
+	t_table			*table;
 }	t_philo;	
 
-typedef struct s_config
+typedef struct s_table
 {
-	t_mutex	*mutex_fork;
+	t_mutex	*m_fork;
 
 	int		*fork;
-	long	start_time;
-	int		must_eat;
-	int		number_of_philo;
-	long	time_to_eat;
-	long	time_to_die;
-	long	time_to_sleep;
+	int		m_eat;
+	int		n_philo;
+	long	start_clock;
+	long	time_eat;
+	long	time_die;
+	long	time_dream;
 	t_philo	*ph;
-}	t_config;
+}	t_table;
 
-// Validations
-int		ft_valid_argc(int argc, char **argv);
-int		error_digit(int position);
-int		error_format(void);
-int		error_signal(int position);
-int		error_philo_and_time(void);
+// UTILS FUNCTIONS
 
-// Actions
-void	eat(t_philo *ph);
-void	think(t_philo *ph);
-void	dreams(t_philo *ph);
-
-
-void	test(t_philo *ph);
-void	check_menu(t_philo *ph);
-int		init_vars(t_config *table, int argc, char **argv);
-void	init_fork(t_config *table);
-int		take_fork(t_philo *ph);
-
-// Times/commons
+int		ft_isdigit(char c);
+int		str_isdigit(char *str);
 long	get_time(void);
-long	time_now(t_philo *ph);
-void	smart_sleep(long duration, t_philo *ph);
+
+// DINNER FUNCTIONS
+
 
 #endif
