@@ -6,11 +6,26 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:56:45 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/23 12:03:59 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:16:03 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
+
+void	init_fork(t_table *table)
+
+{
+	int	i;
+
+	i = -1;
+	table->m_fork = malloc(sizeof(t_mutex) * table->n_philo);
+	table->fork = malloc(sizeof(int) * table->n_philo);
+	while (++i < table->n_philo)
+	{
+		pthread_mutex_init(&table->m_fork[i], NULL);
+		table->fork[i] = 1;
+	}
+}
 
 int	init_vars(t_table *table, int argc, char **argv)
 
