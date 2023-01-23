@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:56:45 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/23 15:27:15 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/23 20:02:45 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	start_philo(t_table *table, int t_philo)
 	{
 		table->ph[i].index = i + 1;
 		table->ph[i].id = i;
+		table->ph[i].l_fork = i;
 		table->ph[i].table = table;
 		pthread_create(&table->ph[i].philo, NULL, &dinner, &table->ph[i]);
 	}
@@ -66,6 +67,14 @@ void	init_fork(t_table *table)
 	{
 		pthread_mutex_init(&table->m_fork[i], NULL);
 		table->fork[i] = 1;
+	}
+	i = -1;
+	while (++i < table->n_philo)
+	{
+		if (i == (table->n_philo - 1) && table->n_philo > 1)
+			table->ph[i].r_fork = 0;
+		else
+			table->ph[i].r_fork = i + 1;
 	}
 }
 
