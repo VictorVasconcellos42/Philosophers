@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/23 15:15:05 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:29:17 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,16 @@ int		valid_times(t_table *table);
 // INIT FUNCTIONS //
 
 int		init_vars(t_table *table, int argc, char **argv);
+void	start_philo(t_table *table, int t_philo);
+void	finish_philo(t_table *table, int t_philo);
+void	init_fork(t_table *table);
 
 // MUTEX FUNCTIONS //
 
 int		lock(t_mutex mutex);
 int		unlock(t_mutex mutex);
 
+// DINNER FUNCTIONS //
+
+void	*dinner(void *ph);
 #endif
