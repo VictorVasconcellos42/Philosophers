@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 10:57:27 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/23 14:20:46 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:34:27 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,9 @@ int	main(int argc, char **argv)
 
 	if (!ft_valid_argc(argc, argv) || !init_vars(&table, argc, argv))
 		return (0);
+	table.ph = malloc(sizeof(t_philo) * table.n_philo);
+	init_fork(&table);
+	start_philo(&table, table.n_philo);
+	finish_philo(&table, table.n_philo);
 	return (0);
 }
