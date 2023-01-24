@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:14:04 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/23 20:09:16 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/24 11:13:07 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ long	time_now(t_philo *ph)
 void	smart_sleep(long duration, t_philo *ph)
 
 {
-    long    start_time;
+	long	start_time;
 
-    start_time = time_now(ph);
-    while (time_now(ph) - start_time < duration)
+	start_time = time_now(ph);
+	while (time_now(ph) - start_time < duration)
 		usleep(100);
 }
