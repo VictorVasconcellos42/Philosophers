@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:34:25 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/23 10:39:02 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/24 00:01:29 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ void	back_fork(t_philo *ph)
 void	eat(t_philo *ph)
 
 {
-	//if (!(ph->id % 2) && (ph->table->number_of_philo % 2))
-	//	usleep(5000);
 	printf("[%ld]ms\t%i is eating\n", time_now(ph), ph->index);
 	smart_sleep(ph->table->time_to_eat, ph);
 	back_fork(ph);
