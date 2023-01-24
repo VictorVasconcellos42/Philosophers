@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:01:42 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/23 20:05:20 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/23 23:00:21 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ void	take_fork(t_philo *ph)
 		lock(ph->table->m_fork[ph->l_fork]);
 		lock(ph->table->m_fork[ph->r_fork]);
 		ph->table->fork[ph->l_fork] = 0;
-		ph->table->fork[ph->r_fork] = 0;		
+		ph->table->fork[ph->r_fork] = 0;
+		printf("%ld\t%i taken a fork\n", time_now(ph), ph->index);
+		printf("%ld\t%i taken a fork\n", time_now(ph), ph->index);
 	}
 	else
 	{
@@ -35,5 +37,7 @@ void	take_fork(t_philo *ph)
 		lock(ph->table->m_fork[ph->l_fork]);
 		ph->table->fork[ph->l_fork] = 0;
 		ph->table->fork[ph->r_fork] = 0;
+		printf("%ld\t%i taken a fork\n", time_now(ph), ph->index);
+		printf("%ld\t%i taken a fork\n", time_now(ph), ph->index);
 	}
 }

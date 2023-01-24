@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 20:05:59 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/23 20:28:50 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/23 23:02:08 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	eat(t_philo *ph)
 	if (ph->id % 2 != 0)
 	{
 		printf("%lu\t%i is eating\n", time_now(ph), ph->index);
-		smart_sleep(ph->table->time_eat * 1000, ph);
+		smart_sleep(ph->table->time_eat, ph);
 		ph->table->fork[ph->l_fork] = 1;
 		ph->table->fork[ph->r_fork] = 1;
 		unlock(ph->table->m_fork[ph->l_fork]);
