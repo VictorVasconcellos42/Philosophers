@@ -6,7 +6,7 @@
 #    By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 12:46:22 by vde-vasc          #+#    #+#              #
-#    Updated: 2023/01/23 20:20:58 by vde-vasc         ###   ########.fr        #
+#    Updated: 2023/01/28 09:38:31 by vde-vasc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJ	=	${SRC:.c=.o}
 
 CC	=	cc
 
-CFLAGS	=	-g -Wall -Wextra -Werror -pthread
+CFLAGS	=  -g -Wall -Wextra -Werror -pthread -fsanitize=thread
 
 ############# COLOR ##################
 
