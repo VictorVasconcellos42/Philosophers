@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:56:45 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/23 23:49:25 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/28 19:47:38 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	init_fork(t_table *table)
 	i = -1;
 	table->m_fork = malloc(sizeof(t_mutex) * table->n_philo);
 	table->fork = malloc(sizeof(int) * table->n_philo);
+	pthread_mutex_init(&table->creed, NULL);
+	pthread_mutex_init(&table->print, NULL);
 	while (++i < table->n_philo)
 	{
 		pthread_mutex_init(&table->m_fork[i], NULL);
@@ -81,6 +83,7 @@ void	init_fork(t_table *table)
 int	init_vars(t_table *table, int argc, char **argv)
 
 {
+	table->died = 0;
 	table->n_philo = ft_atol(argv[1]);
 	table->time_die = ft_atol(argv[2]);
 	table->time_eat = ft_atol(argv[3]);
@@ -90,7 +93,7 @@ int	init_vars(t_table *table, int argc, char **argv)
 		table->m_eat = ft_atol(argv[5]);
 	else
 		table->m_eat = -1;
-	if (!valid_times(table))
+	if (valid_times(table) == FALSE)
 		return (FALSE);
 	return (TRUE);
 }

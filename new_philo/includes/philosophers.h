@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/28 10:25:41 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/28 16:04:32 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # define TRUE 1
 # define FALSE 0
 # define DINNER 42
+# define EAT 90
+# define THINK 91
+# define DREAMS 92
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
 # define BLUE "\033[0;34m"
@@ -46,7 +49,8 @@ typedef struct s_philo
 typedef struct s_table
 {
 	t_mutex		*m_fork;
-
+	t_mutex		creed;
+	t_mutex		print;
 	int			*fork;
 	int			died;
 	int			m_eat;
@@ -86,6 +90,10 @@ int		init_vars(t_table *table, int argc, char **argv);
 void	start_philo(t_table *table, int t_philo);
 void	finish_philo(t_table *table, int t_philo);
 void	init_fork(t_table *table);
+
+// SCAN FUNCTIONS //
+
+int	scan(t_philo *ph);
 
 // MUTEX FUNCTIONS //
 
