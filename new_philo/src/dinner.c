@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:01:42 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/24 11:13:25 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/28 09:53:03 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,29 @@
 void	check_menu(t_philo *ph)
 
 {
-	if (ph->id % 2 != 0)
-		usleep(600);
+	if (ph->id % 2 == 0)
+		usleep(500);
 }
 
 void	take_fork(t_philo *ph)
 
 {
-	if (ph->id % 2 != 0)
+	if (ph->id % 2 && ph->index != ph->table->n_philo)
 	{
-		lock(ph->table->m_fork[ph->l_fork]);
-		lock(ph->table->m_fork[ph->r_fork]);
+		pthread_mutex_lock(&ph->table->m_fork[ph->l_fork]);
 		ph->table->fork[ph->l_fork] = 0;
+		printf("%ld\t%i has taken a fork\n", time_now(ph), ph->index);
+		pthread_mutex_lock(&ph->table->m_fork[ph->r_fork]);
 		ph->table->fork[ph->r_fork] = 0;
+		printf("%ld\t%i has taken a fork\n", time_now(ph), ph->index);
 	}
 	else
 	{
-		lock(ph->table->m_fork[ph->r_fork]);
-		lock(ph->table->m_fork[ph->l_fork]);
-		ph->table->fork[ph->l_fork] = 0;
+		pthread_mutex_lock(&ph->table->m_fork[ph->r_fork]);
 		ph->table->fork[ph->r_fork] = 0;
+		printf("%ld\t%i has taken a fork\n", time_now(ph), ph->index);
+		pthread_mutex_lock(&ph->table->m_fork[ph->l_fork]);
+		ph->table->fork[ph->l_fork] = 0;
+		printf("%ld\t%i has taken a fork\n", time_now(ph), ph->index);
 	}
-	printf("%ld\t%i taken a fork\n", time_now(ph), ph->index);
-	printf("%ld\t%i taken a fork\n", time_now(ph), ph->index);
 }

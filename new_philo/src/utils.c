@@ -6,32 +6,22 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:01:54 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/23 14:22:10 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/28 09:47:18 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-int	unlock(t_mutex mutex)
+void	unlock(t_mutex mutex)
 
 {
-	int	error;
-
-	error = pthread_mutex_unlock(&mutex);
-	if (!error)
-		return (FALSE);
-	return (TRUE);
+	pthread_mutex_unlock(&mutex);
 }
 
-int	lock(t_mutex mutex)
+void	lock(t_mutex mutex)
 
 {
-	int	error;
-
-	error = pthread_mutex_lock(&mutex);
-	if (!error)
-		return (FALSE);
-	return (TRUE);
+	pthread_mutex_lock(&mutex);
 }
 
 long	get_time(void)

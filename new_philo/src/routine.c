@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 20:05:59 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/24 11:13:18 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/28 09:52:56 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,23 @@
 
 void	eat(t_philo *ph)
 {
-	printf("%lu\t%i is eating\n", time_now(ph), ph->index);
-	if (ph->id % 2 != 0)
+	if (ph->id % 2)
 	{
+		printf("%lu\t%i is eating\n", time_now(ph), ph->index);
 		smart_sleep(ph->table->time_eat, ph);
 		ph->table->fork[ph->l_fork] = 1;
+		pthread_mutex_unlock(&ph->table->m_fork[ph->l_fork]);
 		ph->table->fork[ph->r_fork] = 1;
-		unlock(ph->table->m_fork[ph->l_fork]);
-		unlock(ph->table->m_fork[ph->r_fork]);
+		pthread_mutex_unlock(&ph->table->m_fork[ph->r_fork]);
 	}
 	else
 	{
+		printf("%lu\t%i is eating\n", time_now(ph), ph->index);
 		smart_sleep(ph->table->time_eat, ph);
 		ph->table->fork[ph->r_fork] = 1;
+		pthread_mutex_unlock(&ph->table->m_fork[ph->r_fork]);
 		ph->table->fork[ph->l_fork] = 1;
-		unlock(ph->table->m_fork[ph->r_fork]);
-		unlock(ph->table->m_fork[ph->l_fork]);
+		pthread_mutex_unlock(&ph->table->m_fork[ph->l_fork]);
 	}
 }
 
