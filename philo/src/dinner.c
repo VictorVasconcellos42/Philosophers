@@ -6,7 +6,11 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 15:53:43 by vde-vasc          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2023/01/22 15:50:08 by vasconcel        ###   ########.fr       */
+=======
 /*   Updated: 2023/01/23 09:58:03 by vde-vasc         ###   ########.fr       */
+>>>>>>> 96e7a08ff32d37906a6eaa3ea63ae71ae802c1c1
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +42,10 @@ int	take_fork(t_philo *ph)
 		{
 			UNLOCK(&ph->table->mutex_fork[ph->id]);
 			UNLOCK(&ph->table->mutex_fork[ph->id + 1]);
+<<<<<<< HEAD
+			printf("wait\n");
+=======
+>>>>>>> 96e7a08ff32d37906a6eaa3ea63ae71ae802c1c1
 			return (0);
 		}
 	}
@@ -56,6 +64,10 @@ int	take_fork(t_philo *ph)
 		{	
 			UNLOCK(&ph->table->mutex_fork[ph->id]);
 			UNLOCK(&ph->table->mutex_fork[0]);
+<<<<<<< HEAD
+			printf("wait\n");
+=======
+>>>>>>> 96e7a08ff32d37906a6eaa3ea63ae71ae802c1c1
 			return (0);
 		}	
 	}
