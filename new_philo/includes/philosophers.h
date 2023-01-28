@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/28 09:46:55 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/28 10:25:41 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 # define TRUE 1
 # define FALSE 0
 # define DINNER 42
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define BLUE "\033[0;34m"
+# define END "\033[0m"
 
 typedef struct s_table	t_table;
 typedef struct s_philo	t_philo;
@@ -41,16 +45,18 @@ typedef struct s_philo
 
 typedef struct s_table
 {
-	t_mutex	*m_fork;
+	t_mutex		*m_fork;
 
-	int		*fork;
-	int		m_eat;
-	int		n_philo;
-	long	start_clock;
-	long	time_eat;
-	long	time_die;
-	long	time_dream;
-	t_philo	*ph;
+	int			*fork;
+	int			died;
+	int			m_eat;
+	int			n_philo;
+	long		start_clock;
+	long		time_eat;
+	long		time_die;
+	long		time_dream;
+	pthread_t	scanner;
+	t_philo		*ph;
 }	t_table;
 
 // UTILS FUNCTIONS //
