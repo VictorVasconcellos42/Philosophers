@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/23 20:19:26 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/28 09:46:55 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ void	init_fork(t_table *table);
 
 // MUTEX FUNCTIONS //
 
-int		lock(t_mutex mutex);
-int		unlock(t_mutex mutex);
+void	lock(t_mutex mutex);
+void	unlock(t_mutex mutex);
 
 // DINNER FUNCTIONS //
 
