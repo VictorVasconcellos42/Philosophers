@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/28 16:04:32 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/29 13:36:15 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	init_fork(t_table *table);
 
 // SCAN FUNCTIONS //
 
-int	scan(t_philo *ph);
+int		scan(t_philo *ph);
 
 // MUTEX FUNCTIONS //
 

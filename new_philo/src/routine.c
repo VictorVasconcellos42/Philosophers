@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 20:05:59 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/28 16:07:15 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/29 13:35:11 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void	print(int action, t_philo *ph)
 		printf("%s%lu\t%i is eating\n%s", RED, time_now(ph), ph->index, END);
 	pthread_mutex_unlock(&ph->table->print);
 }
-
 
 void	eat(t_philo *ph)
 {
@@ -61,4 +60,3 @@ void	dreams(t_philo *ph)
 	print(DREAMS, ph);
 	smart_sleep(ph->table->time_dream, ph);
 }
-
