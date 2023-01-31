@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 20:05:59 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/29 13:35:11 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/01/31 14:58:01 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 static void	print(int action, t_philo *ph)
 
 {
-	pthread_mutex_lock(&ph->table->print);
-	if (action == THINK && ph->table->died == 0)
-		printf("%s%ld\t%i is thinking\n%s", BLUE, time_now(ph), ph->index, END);
-	else if (action == DREAMS && ph->table->died == 0)
-		printf("%s%ld\t%i is sleeping\n%s", GREEN, time_now(ph), ph->index, END);
-	else if (action == EAT && ph->table->died == 0)
-		printf("%s%lu\t%i is eating\n%s", RED, time_now(ph), ph->index, END);
-	pthread_mutex_unlock(&ph->table->print);
+	if (ph->table->died == 0)
+	{
+		pthread_mutex_lock(&ph->table->print);
+		if (action == THINK)
+			printf("%s%ld\t%i is thinking\n%s", BLUE, time_now(ph), ph->index, END);
+		else if (action == DREAMS)
+			printf("%s%ld\t%i is sleeping\n%s", GREEN, time_now(ph), ph->index, END);
+		else if (action == EAT)
+			printf("%s%lu\t%i is eating\n%s", RED, time_now(ph), ph->index, END);
+		pthread_mutex_unlock(&ph->table->print);
+	}
 }
 
 void	eat(t_philo *ph)
@@ -39,7 +42,7 @@ void	eat(t_philo *ph)
 	}
 	else
 	{
-		printf("%s%lu\t%i is eating\n%s", RED, time_now(ph), ph->index, END);
+		print(EAT, ph);
 		smart_sleep(ph->table->time_eat, ph);
 		ph->table->fork[ph->r_fork] = 1;
 		pthread_mutex_unlock(&ph->table->m_fork[ph->r_fork]);
