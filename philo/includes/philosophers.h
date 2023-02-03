@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/29 13:36:15 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/03 12:06:17 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@
 # define EAT 90
 # define THINK 91
 # define DREAMS 92
+# define DEAD 93
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
+# define YELLOW "\033[0;33m"
 # define BLUE "\033[0;34m"
 # define END "\033[0m"
 
@@ -51,6 +53,9 @@ typedef struct s_table
 	t_mutex		*m_fork;
 	t_mutex		creed;
 	t_mutex		print;
+	t_mutex		l_meal;
+	t_mutex		dead;
+
 	int			*fork;
 	int			died;
 	int			m_eat;
@@ -97,8 +102,6 @@ int		scan(t_philo *ph);
 
 // MUTEX FUNCTIONS //
 
-void	lock(t_mutex mutex);
-void	unlock(t_mutex mutex);
 
 // DINNER FUNCTIONS //
 

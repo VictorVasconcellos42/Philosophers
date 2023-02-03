@@ -6,26 +6,31 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:56:45 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/31 14:49:08 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/03 12:08:26 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-void	*dinner(void *ph)
+void	*dinner(void *t)
 
 {
-	t_philo	*filo;
+	t_philo	*ph;
 
-	filo = (t_philo *)ph;
-	check_menu(filo);
+	ph = (t_philo *)t;
+	check_menu(ph);
 	while (DINNER)
 	{
-		take_fork(filo);
-		eat(filo);
-		dreams(filo);
-		think(filo);
+		pthread_mutex_lock(&ph->table->dead);
+		if (ph->table->died == 1)
+			break ;
+		pthread_mutex_unlock(&ph->table->dead);
+		take_fork(ph);
+		eat(ph);
+		dreams(ph);
+		think(ph);
 	}
+	pthread_mutex_unlock(&ph->table->dead);
 	return (NULL);
 }
 
@@ -43,6 +48,7 @@ void	start_philo(t_table *table, int t_philo)
 		table->ph[i].table = table;
 		pthread_create(&table->ph[i].philo, NULL, &dinner, &table->ph[i]);
 	}
+	scan(table);
 }
 
 void	finish_philo(t_table *table, int t_philo)

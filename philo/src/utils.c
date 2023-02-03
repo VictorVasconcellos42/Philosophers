@@ -6,23 +6,11 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:01:54 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/28 09:47:18 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/03 11:53:30 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
-
-void	unlock(t_mutex mutex)
-
-{
-	pthread_mutex_unlock(&mutex);
-}
-
-void	lock(t_mutex mutex)
-
-{
-	pthread_mutex_lock(&mutex);
-}
 
 long	get_time(void)
 
