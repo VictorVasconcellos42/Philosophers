@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:01:42 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/01/28 09:53:03 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/04 15:26:33 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@ void	take_fork(t_philo *ph)
 	{
 		pthread_mutex_lock(&ph->table->m_fork[ph->l_fork]);
 		ph->table->fork[ph->l_fork] = 0;
-		printf("%ld\t%i has taken a fork\n", time_now(ph), ph->index);
+		print(FORK, ph);
 		pthread_mutex_lock(&ph->table->m_fork[ph->r_fork]);
 		ph->table->fork[ph->r_fork] = 0;
-		printf("%ld\t%i has taken a fork\n", time_now(ph), ph->index);
+		print(FORK, ph);
 	}
 	else
 	{
 		pthread_mutex_lock(&ph->table->m_fork[ph->r_fork]);
 		ph->table->fork[ph->r_fork] = 0;
-		printf("%ld\t%i has taken a fork\n", time_now(ph), ph->index);
+		print(FORK, ph);
 		pthread_mutex_lock(&ph->table->m_fork[ph->l_fork]);
 		ph->table->fork[ph->l_fork] = 0;
-		printf("%ld\t%i has taken a fork\n", time_now(ph), ph->index);
+		print(FORK, ph);
 	}
 }

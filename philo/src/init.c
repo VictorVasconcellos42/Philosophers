@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:56:45 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/02/03 12:08:26 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/03 17:02:46 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void	init_fork(t_table *table)
 	i = -1;
 	table->m_fork = malloc(sizeof(t_mutex) * table->n_philo);
 	table->fork = malloc(sizeof(int) * table->n_philo);
-	pthread_mutex_init(&table->creed, NULL);
+	pthread_mutex_init(&table->l_meal, NULL);
+	pthread_mutex_init(&table->dead, NULL);
 	pthread_mutex_init(&table->print, NULL);
 	while (++i < table->n_philo)
 	{

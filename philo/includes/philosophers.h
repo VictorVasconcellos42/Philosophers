@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/02/03 12:06:17 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/04 15:25:18 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define THINK 91
 # define DREAMS 92
 # define DEAD 93
+# define FORK 94
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
 # define YELLOW "\033[0;33m"
@@ -75,6 +76,7 @@ long	get_time(void);
 long	time_now(t_philo *ph);
 long	ft_atol(const char *str);
 void	smart_sleep(long duration, t_philo *ph);
+void	print(int action, t_philo *ph);
 
 // ERROR FUNCTIONS //
 
@@ -98,7 +100,7 @@ void	init_fork(t_table *table);
 
 // SCAN FUNCTIONS //
 
-int		scan(t_philo *ph);
+int		scan(t_table *ph);
 
 // MUTEX FUNCTIONS //
 

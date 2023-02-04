@@ -6,15 +6,16 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 20:05:59 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/02/03 12:03:41 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/04 15:25:08 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-static void	print(int action, t_philo *ph)
+void	print(int action, t_philo *ph)
 
 {
+	pthread_mutex_lock(&ph->table->dead);
 	pthread_mutex_lock(&ph->table->print);
 	if (action == THINK && ph->table->died == 0)
 		printf("%s%ld\t%i is thinking\n%s", BLUE, time_now(ph), ph->index, END);
@@ -22,9 +23,10 @@ static void	print(int action, t_philo *ph)
 		printf("%s%ld\t%i is sleeping\n%s", GREEN, time_now(ph), ph->index, END);
 	else if (action == EAT && ph->table->died == 0)
 		printf("%s%lu\t%i is eating\n%s", YELLOW, time_now(ph), ph->index, END);
-	else if (action == DEAD)
-		printf("%s%lu\t%i died\n%s", RED, time_now(ph), ph->index, END);
+	else if (action == FORK && ph->table->died == 0)
+		printf("%ld\t%i has taken a fork\n", time_now(ph), ph->index);
 	pthread_mutex_unlock(&ph->table->print);
+	pthread_mutex_unlock(&ph->table->dead);
 }
 
 void	eat(t_philo *ph)
@@ -33,7 +35,9 @@ void	eat(t_philo *ph)
 	{
 		print(EAT, ph);
 		smart_sleep(ph->table->time_eat, ph);
+		pthread_mutex_lock(&ph->table->l_meal);
 		ph->last_meal = time_now(ph);
+		pthread_mutex_unlock(&ph->table->l_meal);
 		ph->table->fork[ph->l_fork] = 1;
 		pthread_mutex_unlock(&ph->table->m_fork[ph->l_fork]);
 		ph->table->fork[ph->r_fork] = 1;
@@ -43,6 +47,9 @@ void	eat(t_philo *ph)
 	{
 		print(EAT, ph);
 		smart_sleep(ph->table->time_eat, ph);
+		pthread_mutex_lock(&ph->table->l_meal);
+		ph->last_meal = time_now(ph);
+		pthread_mutex_unlock(&ph->table->l_meal);
 		ph->table->fork[ph->r_fork] = 1;
 		pthread_mutex_unlock(&ph->table->m_fork[ph->r_fork]);
 		ph->table->fork[ph->l_fork] = 1;
