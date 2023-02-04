@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/02/04 15:25:18 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/04 16:03:56 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ void	init_fork(t_table *table);
 int		scan(t_table *ph);
 
 // MUTEX FUNCTIONS //
-
 
 // DINNER FUNCTIONS //
 

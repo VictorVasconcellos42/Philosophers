@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 10:09:51 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/02/04 15:32:01 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/04 16:03:48 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	print_death(t_philo ph)
 int	scan(t_table *table)
 
 {
-	int i;
+	int	i;
 
 	i = 0;
 	usleep(1000);
