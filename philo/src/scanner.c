@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 10:09:51 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/02/04 16:03:48 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/07 08:09:36 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	scan(t_table *table)
 	int	i;
 
 	i = 0;
-	usleep(1000);
+	usleep(500);
 	while (1)
 	{
 		pthread_mutex_lock(&table->l_meal);
@@ -40,6 +40,7 @@ int	scan(t_table *table)
 		}
 		pthread_mutex_unlock(&table->l_meal);
 		i = (i + 1) % table->n_philo;
+		smart_sleep(200, table->ph);
 	}
 	pthread_mutex_unlock(&table->dead);
 	return (TRUE);
