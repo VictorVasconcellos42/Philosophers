@@ -6,11 +6,19 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 10:57:27 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/02/01 18:30:57 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/07 08:53:00 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
+
+void	one_dinner(t_philo *ph)
+
+{
+	print(FORK, ph);
+	smart_sleep(ph->table->time_die, ph);
+	print_death(ph[0]);
+}
 
 int	main(int argc, char **argv)
 

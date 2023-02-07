@@ -6,13 +6,13 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 10:09:51 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/02/07 08:09:36 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/07 08:51:33 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-static void	print_death(t_philo ph)
+void	print_death(t_philo ph)
 
 {
 	pthread_mutex_lock(&ph.table->print);
@@ -26,11 +26,11 @@ int	scan(t_table *table)
 	int	i;
 
 	i = 0;
-	usleep(500);
+	usleep(200);
 	while (1)
 	{
 		pthread_mutex_lock(&table->l_meal);
-		if (time_now(table->ph) - table->ph[i].last_meal > table->time_die)
+		if (time_now(table->ph) - table->ph[i].last_meal >= table->time_die)
 		{
 			pthread_mutex_lock(&table->dead);
 			table->died = 1;

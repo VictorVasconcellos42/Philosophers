@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/02/04 16:03:56 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/07 08:51:53 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ long	time_now(t_philo *ph);
 long	ft_atol(const char *str);
 void	smart_sleep(long duration, t_philo *ph);
 void	print(int action, t_philo *ph);
+void	print_death(t_philo ph);
 
 // ERROR FUNCTIONS //
 
@@ -106,6 +107,7 @@ int		scan(t_table *ph);
 
 // DINNER FUNCTIONS //
 
+void	one_dinner(t_philo *ph);
 void	*dinner(void *ph);
 void	dreams(t_philo *ph);
 void	eat(t_philo *ph);
