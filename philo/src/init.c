@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:56:45 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/02/07 08:50:37 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/07 09:50:23 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	*dinner(void *t)
 	check_menu(ph);
 	while (DINNER)
 	{
+		if (ph->ate == ph->table->m_eat)
+			break ;
 		pthread_mutex_lock(&ph->table->dead);
 		if (ph->table->died == 1)
 			break ;
@@ -51,6 +53,7 @@ void	start_philo(t_table *table, int t_philo)
 		table->ph[i].id = i;
 		table->ph[i].l_fork = i;
 		table->ph[i].table = table;
+		table->ph[i].ate = 0;
 		pthread_create(&table->ph[i].philo, NULL, &dinner, &table->ph[i]);
 	}
 	if (table->n_philo != 1)
@@ -65,6 +68,7 @@ void	finish_philo(t_table *table, int t_philo)
 	i = 0;
 	while (i < t_philo)
 		pthread_join(table->ph[i++].philo, NULL);
+	free(table->ph);
 }
 
 void	init_fork(t_table *table)
@@ -74,15 +78,11 @@ void	init_fork(t_table *table)
 
 	i = -1;
 	table->m_fork = malloc(sizeof(t_mutex) * table->n_philo);
-	table->fork = malloc(sizeof(int) * table->n_philo);
 	pthread_mutex_init(&table->l_meal, NULL);
 	pthread_mutex_init(&table->dead, NULL);
 	pthread_mutex_init(&table->print, NULL);
 	while (++i < table->n_philo)
-	{
 		pthread_mutex_init(&table->m_fork[i], NULL);
-		table->fork[i] = 1;
-	}
 	i = -1;
 	while (++i < table->n_philo)
 	{

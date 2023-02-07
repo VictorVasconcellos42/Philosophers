@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:39:00 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/02/07 08:51:53 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/07 09:49:30 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_philo
 	long			last_meal;
 	int				r_fork;
 	int				l_fork;
+	int				ate;
 	pthread_t		philo;
 	t_table			*table;
 }	t_philo;	
@@ -57,7 +58,6 @@ typedef struct s_table
 	t_mutex		l_meal;
 	t_mutex		dead;
 
-	int			*fork;
 	int			died;
 	int			m_eat;
 	int			n_philo;
@@ -104,6 +104,8 @@ void	init_fork(t_table *table);
 int		scan(t_table *ph);
 
 // MUTEX FUNCTIONS //
+
+void	destroy_mutex(t_table *table);
 
 // DINNER FUNCTIONS //
 

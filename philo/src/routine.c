@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 20:05:59 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/02/04 17:12:11 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/07 09:43:08 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	eat(t_philo *ph)
 	if (ph->id % 2 && ph->index != ph->table->n_philo)
 	{
 		print(EAT, ph);
+		ph->ate += 1;
 		smart_sleep(ph->table->time_eat, ph);
 		pthread_mutex_lock(&ph->table->l_meal);
 		ph->last_meal = time_now(ph);
@@ -44,6 +45,7 @@ void	eat(t_philo *ph)
 	else
 	{
 		print(EAT, ph);
+		ph->ate += 1;
 		smart_sleep(ph->table->time_eat, ph);
 		pthread_mutex_lock(&ph->table->l_meal);
 		ph->last_meal = time_now(ph);

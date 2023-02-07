@@ -6,11 +6,25 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 10:57:27 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/02/07 08:53:00 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/07 09:50:30 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
+
+void	destroy_mutex(t_table *table)
+
+{
+	int	i;
+
+	i = -1;
+	while (++i < table->n_philo)
+		pthread_mutex_destroy(&table->m_fork[i]);
+	pthread_mutex_destroy(&table->creed);
+	pthread_mutex_destroy(&table->dead);
+	pthread_mutex_destroy(&table->l_meal);
+	pthread_mutex_destroy(&table->print);
+}
 
 void	one_dinner(t_philo *ph)
 
