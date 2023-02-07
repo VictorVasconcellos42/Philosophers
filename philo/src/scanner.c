@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 10:09:51 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/02/07 10:00:47 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/07 10:49:14 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int	scan(t_table *table)
 
 	i = 0;
 	usleep(200);
-	while (meal(table->ph[i]) != table->m_eat)
+	while (1)
 	{
-		if (table->m_eat == table->ph[table->n_philo].ate)
+		if (meal(table->ph[i]) == table->m_eat)
 			break ;
 		pthread_mutex_lock(&table->l_meal);
 		if (time_now(table->ph) - table->ph[i].last_meal >= table->time_die)
@@ -51,7 +51,7 @@ int	scan(t_table *table)
 		}
 		pthread_mutex_unlock(&table->l_meal);
 		i = (i + 1) % table->n_philo;
-		smart_sleep(200, table->ph);
+		usleep(200);
 	}
 	pthread_mutex_unlock(&table->dead);
 	return (TRUE);

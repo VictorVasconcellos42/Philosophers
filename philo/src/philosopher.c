@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 10:57:27 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/02/07 09:50:30 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/07 10:53:38 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	destroy_mutex(t_table *table)
 	pthread_mutex_destroy(&table->dead);
 	pthread_mutex_destroy(&table->l_meal);
 	pthread_mutex_destroy(&table->print);
+	free(table->m_fork);
 }
 
 void	one_dinner(t_philo *ph)
