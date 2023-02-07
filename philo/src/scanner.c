@@ -6,16 +6,16 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 10:09:51 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/02/07 10:49:14 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/07 10:55:57 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-static int meal(t_philo ph)
+static int	meal(t_philo ph)
 
 {
-	int status;
+	int	status;
 
 	status = ph.ate;
 	return (status);
