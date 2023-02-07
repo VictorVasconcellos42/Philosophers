@@ -6,11 +6,20 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 10:09:51 by vde-vasc          #+#    #+#             */
-/*   Updated: 2023/02/07 09:45:09 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2023/02/07 10:00:47 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
+
+static int meal(t_philo ph)
+
+{
+	int status;
+
+	status = ph.ate;
+	return (status);
+}
 
 void	print_death(t_philo ph)
 
@@ -27,9 +36,9 @@ int	scan(t_table *table)
 
 	i = 0;
 	usleep(200);
-	while (1)
+	while (meal(table->ph[i]) != table->m_eat)
 	{
-		if (table->m_eat == i)
+		if (table->m_eat == table->ph[table->n_philo].ate)
 			break ;
 		pthread_mutex_lock(&table->l_meal);
 		if (time_now(table->ph) - table->ph[i].last_meal >= table->time_die)
